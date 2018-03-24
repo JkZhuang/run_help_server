@@ -1,0 +1,77 @@
+package com.zjk.entity;
+
+import java.util.Date;
+
+public class RankingVersion {
+
+	private int rVId;
+	private int uId;  // UserInfo外键
+	private String userName;
+	private String headUrl;
+	private int ranking; // 排名
+	private Date time;
+
+	public RankingVersion() {
+
+	}
+
+	public int getrVId() {
+		return rVId;
+	}
+
+	public void setrVId(int rVId) {
+		this.rVId = rVId;
+	}
+
+	public int getuId() {
+		return uId;
+	}
+
+	public void setuId(int uId) {
+		this.uId = uId;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getHeadUrl() {
+		return headUrl;
+	}
+
+	public void setHeadUrl(String headUrl) {
+		this.headUrl = headUrl;
+	}
+
+	public int getRanking() {
+		return ranking;
+	}
+
+	public void setRanking(int ranking) {
+		this.ranking = ranking;
+	}
+
+	public Date getTime() {
+		return time;
+	}
+
+	public void setTime(Date time) {
+		this.time = time;
+	}
+
+	@Override
+	public String toString() {
+		return "RankingVersion{" +
+				"rVId=" + rVId +
+				", uId=" + uId +
+				", userName='" + userName + '\'' +
+				", headUrl='" + headUrl + '\'' +
+				", ranking=" + ranking +
+				", time=" + time +
+				'}';
+	}
+}

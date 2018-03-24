@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zjk.dao.ForumDao">
+
+    <insert id="insertForum" parameterType="ForumInfo">
+        INSERT INTO forum(uId,userName,content,photoUrl,time)
+        VALUES (#{uId},#{userName},#{content},#{photoUrl},#{time})
+    </insert>
+
+    <insert id="insertCommentForum" parameterType="CommentForumInfo">
+        INSERT INTO comment_forum(fId,uId,userName,content,photoUrl,time)
+        VALUES (#{fId},#{uId},#{userName},#{content},#{photoUrl},#{time})
+    </insert>
+
+    <insert id="insertLikeForum" parameterType="LikeForumInfo">
+        INSERT INTO like_forum(fId,uId,userName,time)
+        VALUES (#{fId},#{uId},#{userName},#{time})
+    </insert>
+
+    <select id="query" resultType="ForumInfo">
+        select *
+        from Menu
+        WHERE  uId = #{uId}
+    </select>
+
+</mapper>

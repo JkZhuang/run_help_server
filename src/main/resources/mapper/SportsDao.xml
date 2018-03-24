@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zjk.dao.SportsDao">
+
+    <insert id="insert" parameterType="SportsData">
+        INSERT  INTO  sports(uId,type,usedTime,startTime,endTime,distance,maxSpeed)
+        VALUES (#{uId},#{type},#{usedTime},#{startTime},#{endTime},#{distance},#{maxSpeed})
+    </insert>
+
+    <select id="querySportsData" resultType="SportsData">
+        SELECT * FROM sports
+        WHERE uId=#{uId}
+    </select>
+
+    <select id="querySportsGranularityData" resultType="SportsGranularityData">
+        SELECT * FROM sports_granularity
+        WHERE sDId=#{sDId}
+    </select>
+
+    <select id="queryRankingVersion" resultType="RankingVersion">
+        SELECT * FROM ranking_version
+    </select>
+
+    <select id="queryUserSportsSuggestedData" resultType="TrainingSuggestData">
+        SELECT * FROM sports_suggest_data
+        WHERE uId=#{uId}
+    </select>
+
+    <select id="querySportsSuggestion" resultType="sportsSuggestion">
+        SELECT * FROM sports_suggestion
+        WHERE uId=#{uId}
+    </select>
+
+    <update id="updateFallThreshold" parameterType="double">
+        update fall_threshold set fallThreshold=#{fallThreshold}
+    </update>
+
+</mapper>

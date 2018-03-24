@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="run_helper:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="run_helper.war">
+      <element id="artifact" artifact-name="run_helper:war exploded" />
+    </root>
+  </artifact>
+</component>

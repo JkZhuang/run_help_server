@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zjk.dao.UserDao">
+
+    <insert id="insert" parameterType="UserInfo">
+        insert INTO  user(phone,password,userName,headUrl,height,weight,age,gender,urgentPhone)
+        VALUES (#{phone},#{password},#{userName},#{headUrl},#{height},#{weight},#{age},#{gender},#{urgentPhone})
+    </insert>
+
+    <update id="update" parameterType="UserInfo">
+        update user SET phone=#{phone},password=#{password},userName=#{userName},headUrl=#{headUrl},
+        height=#{height},weight=#{weight},age=#{age},gender=#{gender},
+        urgentPhone=#{urgentPhone}
+        WHERE  uId=#{uId}
+    </update>
+
+    <select id="query" resultType="UserInfo">
+        SELECT * FROM  user
+        WHERE phone=#{phone}
+    </select>
+
+</mapper>

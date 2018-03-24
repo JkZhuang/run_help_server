@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zjk.dao.FeedbackDao">
+
+    <insert id="insert" parameterType="Feedback">
+       INSERT  INTO  feedback(mId,content,contact)
+       VALUES(#{mId},#{content},#{contack})
+    </insert>
+
+    <select id="query" resultType="Feedback">
+        SELECT *
+        FROM feedback
+        WHERE uId = #{uId}
+    </select>
+
+</mapper>
