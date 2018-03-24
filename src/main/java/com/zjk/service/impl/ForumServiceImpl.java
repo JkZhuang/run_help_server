@@ -29,7 +29,6 @@ public class ForumServiceImpl implements ForumService {
 	}
 
 	public ArrayList<ForumInfo> query(int uId, int lastFId) {
-
 		return forumDao.query(uId, lastFId);
 	}
 }

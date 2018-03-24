@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/run_helper.iml" filepath="$PROJECT_DIR$/run_helper.iml" />
+      <module fileurl="file://$PROJECT_DIR$/run_help.iml" filepath="$PROJECT_DIR$/run_help.iml" />
     </modules>
   </component>
 </project>
