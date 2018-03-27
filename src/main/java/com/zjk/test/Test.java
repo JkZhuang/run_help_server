@@ -15,9 +15,9 @@ import java.io.InputStreamReader;
 
 public class Test {
 
-	public static String url = "http://localhost:8080/shujuku/merchant/register";
 	public static org.apache.http.client.HttpClient httpclient = HttpClients.createDefault();
-	public static String url1 = "http://172.27.36.18:8080/user/register";
+    public static String url1 = "http://192.168.43.4:8080/user/register";
+	public static String url2 = "http://172.27.36.18:8080/user/register";
 
 	public static void main(String[] args) {
 
