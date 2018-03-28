@@ -16,8 +16,8 @@ import java.io.InputStreamReader;
 public class Test {
 
 	public static org.apache.http.client.HttpClient httpclient = HttpClients.createDefault();
-    public static String url1 = "http://192.168.43.4:8080/user/register";
-	public static String url2 = "http://172.27.36.18:8080/user/register";
+    public static String url2 = "http://192.168.43.4:8080/user/register";
+	public static String url1 = "http://172.27.36.18:8080/user/register";
 
 	public static void main(String[] args) {
 
@@ -25,7 +25,7 @@ public class Test {
 		httpPost.setHeader("Content-Type", "application/json");
 
 		RegisteredParam param = new RegisteredParam();
-		UserInfo userInfo = new UserInfo("18813295244", "123456", "攀登者",
+		UserInfo userInfo = new UserInfo("18813295240", "123456", "攀登者",
 				"https://f12.baidu.com/it/u=2465775762,1509670197&fm=72", 170,
 				60, 24, 0, "18813295244");
 		param.userInfo = userInfo;
