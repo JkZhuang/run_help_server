@@ -1,5 +1,7 @@
 package com.zjk.entity;
 
+import java.util.Date;
+
 public class UserInfo {
 
 	private int uId;
@@ -9,7 +11,7 @@ public class UserInfo {
 	private String headUrl;
 	private int height; // 身高(cm)
 	private int weight; // 体重(kg)
-	private int age; // 年龄
+	private Date birthday; // 生日
 	private int gender; // 性别 0-男,1-女，2-保密
 	private String urgentPhone; // 紧急联系人
 
@@ -18,14 +20,14 @@ public class UserInfo {
 	}
 
 	public UserInfo(String phone, String password, String userName, String headUrl, int height,
-	                int weight, int age, int gender, String urgentPhone) {
+	                int weight, Date birthday, int gender, String urgentPhone) {
 		this.phone = phone;
 		this.password = password;
 		this.userName = userName;
 		this.headUrl = headUrl;
 		this.height = height;
 		this.weight = weight;
-		this.age = age;
+		this.birthday = birthday;
 		this.gender = gender;
 		this.urgentPhone = urgentPhone;
 	}
@@ -86,12 +88,12 @@ public class UserInfo {
 		this.weight = weight;
 	}
 
-	public int getAge() {
-		return age;
+	public Date getBirthday() {
+		return birthday;
 	}
 
-	public void setAge(int age) {
-		this.age = age;
+	public void setBirthday(Date birthday) {
+		this.birthday = birthday;
 	}
 
 	public int getGender() {
@@ -120,7 +122,7 @@ public class UserInfo {
 				", headUrl='" + headUrl + '\'' +
 				", height=" + height +
 				", weight=" + weight +
-				", age=" + age +
+				", birthday=" + birthday +
 				", gender=" + gender +
 				", urgentPhone='" + urgentPhone + '\'' +
 				'}';

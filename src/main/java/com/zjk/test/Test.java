@@ -2,6 +2,7 @@ package com.zjk.test;
 
 import com.zjk.entity.UserInfo;
 import com.zjk.param.RegisteredParam;
+import com.zjk.util.DateUtil;
 import com.zjk.util.GsonUtil;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -12,6 +13,7 @@ import org.apache.http.util.EntityUtils;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.Date;
 
 public class Test {
 
@@ -27,7 +29,7 @@ public class Test {
 		RegisteredParam param = new RegisteredParam();
 		UserInfo userInfo = new UserInfo("18813295240", "123456", "攀登者",
 				"https://f12.baidu.com/it/u=2465775762,1509670197&fm=72", 170,
-				60, 24, 0, "18813295244");
+				60, DateUtil.stringToDate(DateUtil.dateToString(new Date())), 0, "18813295244");
 		param.userInfo = userInfo;
 
 		StringEntity se;
