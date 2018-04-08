@@ -1,5 +1,8 @@
 package com.zjk.entity;
 
+import com.zjk.util.GsonUtil;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class LikeForumInfo {
@@ -8,6 +11,8 @@ public class LikeForumInfo {
 	private int fId; // Forum外键
 	private int uId; // UserInfo外键
 	private String userName;
+
+	@DateTimeFormat(pattern = GsonUtil.DATE_PATTEN)
 	private Date time;
 
 	public LikeForumInfo() {

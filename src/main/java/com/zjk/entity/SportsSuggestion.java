@@ -1,5 +1,8 @@
 package com.zjk.entity;
 
+import com.zjk.util.GsonUtil;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class SportsSuggestion {
@@ -7,6 +10,8 @@ public class SportsSuggestion {
 	public int sSId;
 	public int uId;  // UserInfo外键
 	public int type;
+
+	@DateTimeFormat(pattern = GsonUtil.DATE_PATTEN)
 	public Date startTime;
 	public long usedTime;
 

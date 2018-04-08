@@ -1,6 +1,7 @@
 package com.zjk.test;
 
 import com.zjk.entity.UserInfo;
+import com.zjk.param.LoginParam;
 import com.zjk.param.RegisteredParam;
 import com.zjk.util.DateUtil;
 import com.zjk.util.GsonUtil;
@@ -19,7 +20,7 @@ public class Test {
 
 	public static org.apache.http.client.HttpClient httpclient = HttpClients.createDefault();
     public static String url2 = "http://192.168.43.4:8080/user/register";
-	public static String url1 = "http://172.27.36.18:8080/user/register";
+	public static String url1 = "http://172.27.36.1:8080/user/register";
 
 	public static void main(String[] args) {
 
@@ -32,8 +33,15 @@ public class Test {
 				60, DateUtil.stringToDate(DateUtil.dateToString(new Date())), 0, "18813295244");
 		param.userInfo = userInfo;
 
+//		LoginParam param = new LoginParam();
+//		UserInfo userInfo = new UserInfo();
+//		userInfo.setPhone("18813295240");
+//		userInfo.setPassword("123456");
+//		param.userInfo = userInfo;
+
 		StringEntity se;
 		try {
+			System.out.println("json->" + GsonUtil.toJson(param));
 			se = new StringEntity(GsonUtil.toJson(param), "UTF-8");
 			httpPost.setEntity(se);
 			HttpResponse response = httpclient.execute(httpPost);
@@ -45,7 +53,7 @@ public class Test {
 			while ((line = rd.readLine()) != null) {
 				sb.append(line);
 			}
-			System.out.println(sb);
+			System.out.println("response->" + sb);
 			httpPost.abort();
 
 		} catch (Exception e) {

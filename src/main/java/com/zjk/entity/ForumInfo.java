@@ -1,5 +1,8 @@
 package com.zjk.entity;
 
+import com.zjk.util.GsonUtil;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -10,6 +13,8 @@ public class ForumInfo {
 	private String userName;
 	private String content;
 	private String photoUrl;
+
+	@DateTimeFormat(pattern = GsonUtil.DATE_PATTEN)
 	private Date time;
 	private ArrayList<CommentForumInfo> cFList; // 评论
 	private ArrayList<LikeForumInfo> lFList; // 点赞

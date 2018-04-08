@@ -1,5 +1,8 @@
 package com.zjk.entity;
 
+import com.zjk.util.GsonUtil;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class CommentForumInfo {
@@ -10,6 +13,8 @@ public class CommentForumInfo {
 	private String userName;
 	private String content;
 	private String photoUrl;
+
+	@DateTimeFormat(pattern = GsonUtil.DATE_PATTEN)
 	private Date time;
 
 	public CommentForumInfo() {

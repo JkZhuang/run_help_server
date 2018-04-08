@@ -1,5 +1,8 @@
 package com.zjk.entity;
 
+import com.zjk.util.GsonUtil;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -9,7 +12,11 @@ public class SportsData {
 	private int uId; // UserInfo外键
 	private int type; // 0-行走；1-跑步；2-骑行
 	private long usedTime; // 花费时间
+
+	@DateTimeFormat(pattern = GsonUtil.DATE_PATTEN)
 	private Date startTime; // 开始时间
+
+	@DateTimeFormat(pattern = GsonUtil.DATE_PATTEN)
 	private Date endTime; // 结束时间
 	private double distance; // 运动路程
 	private double maxSpeed; // 最大速度

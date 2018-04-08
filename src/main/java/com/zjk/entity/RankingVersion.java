@@ -1,5 +1,8 @@
 package com.zjk.entity;
 
+import com.zjk.util.GsonUtil;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class RankingVersion {
@@ -9,6 +12,8 @@ public class RankingVersion {
 	private String userName;
 	private String headUrl;
 	private int ranking; // 排名
+
+	@DateTimeFormat(pattern = GsonUtil.DATE_PATTEN)
 	private Date time;
 
 	public RankingVersion() {

@@ -1,5 +1,8 @@
 package com.zjk.entity;
 
+import com.zjk.util.GsonUtil;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class UserInfo {
@@ -11,6 +14,8 @@ public class UserInfo {
 	private String headUrl;
 	private int height; // 身高(cm)
 	private int weight; // 体重(kg)
+
+	@DateTimeFormat(pattern = GsonUtil.DATE_PATTEN)
 	private Date birthday; // 生日
 	private int gender; // 性别 0-男,1-女，2-保密
 	private String urgentPhone; // 紧急联系人
