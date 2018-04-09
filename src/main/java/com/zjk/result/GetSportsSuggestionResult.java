@@ -2,7 +2,9 @@ package com.zjk.result;
 
 import com.zjk.entity.SportsSuggestion;
 
+import java.util.List;
+
 public class GetSportsSuggestionResult extends Result {
 
-	public SportsSuggestion sportsSuggestion;
+	public List<SportsSuggestion> sportsSuggestions;
 }

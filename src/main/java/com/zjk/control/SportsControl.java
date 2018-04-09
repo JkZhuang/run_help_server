@@ -61,7 +61,7 @@ public class SportsControl {
 	@ResponseBody
 	public String getSportsSuggestion(@RequestBody GetSportsSuggestionParam param) {
 		GetSportsSuggestionResult result = new GetSportsSuggestionResult();
-		result.sportsSuggestion = sportsService.querySportsSuggestion(param.uId);
+		result.sportsSuggestions = sportsService.querySportsSuggestion(param.uId);
 		return GsonUtil.toJson(result);
 	}
 

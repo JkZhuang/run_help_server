@@ -16,7 +16,7 @@ public interface SportsDao {
 
 	TrainingSuggestData queryUserSportsSuggestedData(int uId);
 
-	SportsSuggestion querySportsSuggestion(int uId);
+	ArrayList<SportsSuggestion> querySportsSuggestion(int uId);
 
 	boolean updateFallThreshold(double fallThreshold);
 

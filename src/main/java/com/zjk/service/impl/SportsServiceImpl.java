@@ -40,7 +40,7 @@ public class SportsServiceImpl implements SportsService {
 		return sportsDao.queryUserSportsSuggestedData(uId);
 	}
 
-	public SportsSuggestion querySportsSuggestion(int uId) {
+	public ArrayList<SportsSuggestion> querySportsSuggestion(int uId) {
 		return sportsDao.querySportsSuggestion(uId);
 	}
 

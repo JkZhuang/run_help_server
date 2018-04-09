@@ -17,7 +17,7 @@ public interface SportsService {
 
 	TrainingSuggestData queryUserSportsSuggesttedData(int uId);
 
-	SportsSuggestion querySportsSuggestion(int uId);
+	ArrayList<SportsSuggestion> querySportsSuggestion(int uId);
 
 	boolean updateFallThreshold(double fallThreshold);
 }
