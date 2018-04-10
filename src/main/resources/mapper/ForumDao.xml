@@ -6,13 +6,13 @@
 <mapper namespace="com.zjk.dao.ForumDao">
 
     <insert id="insertForum" parameterType="ForumInfo">
-        INSERT INTO forum(uId,userName,content,photoUrl,time)
-        VALUES (#{uId},#{userName},#{content},#{photoUrl},#{time})
+        INSERT INTO forum(uId,headPhotoUrl,userName,content,photoUrl,time)
+        VALUES (#{uId},#{headPhotoUrl},#{userName},#{content},#{photoUrl},#{time})
     </insert>
 
     <insert id="insertCommentForum" parameterType="CommentForumInfo">
-        INSERT INTO comment_forum(fId,uId,userName,content,photoUrl,time)
-        VALUES (#{fId},#{uId},#{userName},#{content},#{photoUrl},#{time})
+        INSERT INTO comment_forum(fId,uId,userName,tUId,tUserName,content,time)
+        VALUES (#{fId},#{uId},#{userName},#{tUId},#{tUserName},#{content},#{time})
     </insert>
 
     <insert id="insertLikeForum" parameterType="LikeForumInfo">

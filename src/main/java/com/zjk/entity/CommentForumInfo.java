@@ -11,8 +11,9 @@ public class CommentForumInfo {
 	private int fId; // Forum外键
 	private int uId; // UserInfo外键
 	private String userName;
+	private int tUId; // 评论谁
+	private String tUserName;
 	private String content;
-	private String photoUrl;
 
 	@DateTimeFormat(pattern = GsonUtil.DATE_PATTEN)
 	private Date time;
@@ -53,20 +54,28 @@ public class CommentForumInfo {
 		this.userName = userName;
 	}
 
+	public int gettUId() {
+		return tUId;
+	}
+
+	public void settUId(int tUId) {
+		this.tUId = tUId;
+	}
+
+	public String gettUserName() {
+		return tUserName;
+	}
+
+	public void settUserName(String tUserName) {
+		this.tUserName = tUserName;
+	}
+
 	public String getContent() {
 		return content;
 	}
 
 	public void setContent(String content) {
 		this.content = content;
-	}
-
-	public String getPhotoUrl() {
-		return photoUrl;
-	}
-
-	public void setPhotoUrl(String photoUrl) {
-		this.photoUrl = photoUrl;
 	}
 
 	public Date getTime() {
@@ -84,8 +93,9 @@ public class CommentForumInfo {
 				", fId=" + fId +
 				", uId=" + uId +
 				", userName='" + userName + '\'' +
+				", tUId=" + tUId +
+				", tUserName='" + tUserName + '\'' +
 				", content='" + content + '\'' +
-				", photoUrl='" + photoUrl + '\'' +
 				", time=" + time +
 				'}';
 	}
