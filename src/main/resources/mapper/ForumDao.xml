@@ -22,7 +22,7 @@
 
     <select id="query" resultType="ForumInfo">
         select *
-        from Menu
+        from forum
         WHERE  uId = #{uId}
     </select>
 
