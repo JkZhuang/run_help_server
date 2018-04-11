@@ -14,5 +14,13 @@ public interface ForumDao {
 
 	boolean insertLikeForum(LikeForumInfo likeForumInfo);
 
-	ArrayList<ForumInfo> query(int uId, int lastFId);
+	boolean deleteLikeForum(LikeForumInfo likeForumInfo);
+
+	LikeForumInfo selectLikeForum(LikeForumInfo likeForumInfo);
+
+	ArrayList<ForumInfo> query(int uId);
+
+	ArrayList<CommentForumInfo> queryComment(int fId);
+
+	ArrayList<LikeForumInfo> queryLike(int fId);
 }

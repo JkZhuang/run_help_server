@@ -20,10 +20,34 @@
         VALUES (#{fId},#{uId},#{userName},#{time})
     </insert>
 
+    <delete id="deleteLikeForum" parameterType="LikeForumInfo">
+        DELETE
+        FROM like_forum
+        WHERE lFId = #{lFId}
+    </delete>
+
+    <select id="selectLikeForum" parameterType="LikeForumInfo" resultType="LikeForumInfo">
+        SELECT *
+        FROM like_forum
+        WHERE lFId = #{lFId}
+    </select>
+
     <select id="query" resultType="ForumInfo">
         select *
         from forum
         WHERE  uId = #{uId}
+    </select>
+
+    <select id="queryComment" resultType="CommentForumInfo">
+        SELECT *
+        FROM comment_forum
+        WHERE fId = #{fId}
+    </select>
+
+    <select id="queryLike" resultType="LikeForumInfo">
+        SELECT *
+        FROM like_forum
+        WHERE fId = #{fId}
     </select>
 
 </mapper>

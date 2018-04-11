@@ -25,10 +25,23 @@ public class ForumServiceImpl implements ForumService {
 	}
 
 	public boolean insertLikeForum(LikeForumInfo likeForumInfo) {
-		return forumDao.insertLikeForum(likeForumInfo);
+		LikeForumInfo info = forumDao.selectLikeForum(likeForumInfo);
+		if (info == null) {
+			return forumDao.insertLikeForum(likeForumInfo);
+		} else {
+			return forumDao.deleteLikeForum(likeForumInfo);
+		}
 	}
 
 	public ArrayList<ForumInfo> query(int uId, int lastFId) {
-		return forumDao.query(uId, lastFId);
+		ArrayList<ForumInfo> forumInfos = forumDao.query(uId);
+		if (forumInfos == null) {
+			return null;
+		}
+		for (ForumInfo info : forumInfos) {
+			info.setcFList(forumDao.queryComment(info.getfId()));
+			info.setlFList(forumDao.queryLike(info.getfId()));
+		}
+		return forumInfos;
 	}
 }
