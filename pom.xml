@@ -12,7 +12,7 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.11</version>
+            <version>4.12</version>
             <scope>test</scope>
         </dependency>
 
@@ -40,7 +40,7 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.35</version>
+            <version>5.1.45</version>
             <scope>runtime</scope>
         </dependency>
         <dependency>
@@ -53,12 +53,12 @@
         <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis</artifactId>
-            <version>3.3.0</version>
+            <version>3.4.5</version>
         </dependency>
         <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis-spring</artifactId>
-            <version>1.2.3</version>
+            <version>1.3.1</version>
         </dependency>
         <!--servlet web-->
         <dependency>
@@ -75,12 +75,12 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>2.5.4</version>
+            <version>2.9.4</version>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
-            <version>3.1.0</version>
+            <version>4.0.0</version>
         </dependency>
 
         <!--spring依赖-->
@@ -88,69 +88,69 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
-            <version>4.1.7.RELEASE</version>
+            <version>5.0.4.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-beans</artifactId>
-            <version>4.1.7.RELEASE</version>
+            <version>5.0.4.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
-            <version>4.1.7.RELEASE</version>
+            <version>5.0.4.RELEASE</version>
         </dependency>
 
         <!--spring dao依赖-->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-jdbc</artifactId>
-            <version>4.1.7.RELEASE</version>
+            <version>5.0.4.RELEASE</version>
         </dependency>
 
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-tx</artifactId>
-            <version>4.1.7.RELEASE</version>
+            <version>5.0.4.RELEASE</version>
         </dependency>
 
         <!--spring web-->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
-            <version>4.1.7.RELEASE</version>
+            <version>5.0.4.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
-            <version>4.1.7.RELEASE</version>
+            <version>5.0.4.RELEASE</version>
         </dependency>
 
         <!--spring test-->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
-            <version>4.1.7.RELEASE</version>
+            <version>5.0.4.RELEASE</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
-            <version>2.3.1</version>
+            <version>2.8.2</version>
         </dependency>
         <!--文件上传下载-->
         <!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
-            <version>2.4</version>
+            <version>2.6</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
         <dependency>
             <groupId>commons-fileupload</groupId>
             <artifactId>commons-fileupload</artifactId>
-            <version>1.3.1</version>
+            <version>1.3.3</version>
         </dependency>
 
         <!-- http工具包-->
@@ -158,10 +158,10 @@
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
-            <version>4.5.2</version>
+            <version>4.5.5</version>
         </dependency>
     </dependencies>
-    
+
     <build>
         <finalName>run_helper</finalName>
     </build>
