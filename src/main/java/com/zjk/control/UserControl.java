@@ -73,7 +73,10 @@ public class UserControl {
 
 	@RequestMapping(value = "/changeUserInfo")
 	@ResponseBody
-	public String changeUserInfo(@RequestBody ChangeUserInfoParam param) {
+	public String changeUserInfo(@RequestParam(value = "file") MultipartFile file,
+	                             HttpServletRequest request) {
+		ChangeUserInfoParam param = GsonUtil.toObj(request.getParameter(DefList.JSON), ChangeUserInfoParam.class);
+		param.userInfo.setHeadUrl(UploadFileUtil.upLoadFile(file, DefList.FILE_HEAD, param.userInfo.getPhone()));
 		ChangeUserInfoResult result = new ChangeUserInfoResult();
 		boolean status = userService.update(param.userInfo);
 		if (status) {

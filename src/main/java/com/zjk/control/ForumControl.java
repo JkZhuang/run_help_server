@@ -1,5 +1,6 @@
 package com.zjk.control;
 
+import com.zjk.common.DefList;
 import com.zjk.param.CommentForumParam;
 import com.zjk.param.GetForumParam;
 import com.zjk.param.LikeForumParam;
@@ -10,11 +11,16 @@ import com.zjk.result.LikeForumResult;
 import com.zjk.result.PublishForumResult;
 import com.zjk.service.ForumService;
 import com.zjk.util.GsonUtil;
+import com.zjk.util.UploadFileUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+
+import javax.servlet.http.HttpServletRequest;
 
 @Controller
 @RequestMapping("/forum")
@@ -25,7 +31,10 @@ public class ForumControl {
 
 	@RequestMapping(value = "/publishForum")
 	@ResponseBody
-	public String publishForum(@RequestBody PublishForumParam param) {
+	public String publishForum(@RequestParam(value = "file") MultipartFile file,
+	                           HttpServletRequest request) {
+		PublishForumParam param = GsonUtil.toObj(request.getParameter(DefList.JSON), PublishForumParam.class);
+		param.forumInfo.setPhotoUrl(UploadFileUtil.upLoadFile(file, DefList.FILE_DYNAMIC, String.valueOf(param.forumInfo.getuId())));
 		PublishForumResult result = new PublishForumResult();
 		boolean status = forumService.insertForum(param.forumInfo);
 		if (status) {
