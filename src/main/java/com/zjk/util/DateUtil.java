@@ -15,6 +15,11 @@ public class DateUtil {
         return format.format(date);
     }
 
+    public static String dateToFileNameString(Date date) {
+        SimpleDateFormat format = new SimpleDateFormat(GsonUtil.DATE_FILE_PATTEN);
+        return format.format(date);
+    }
+
     public static Date stringToDate(String strDate) {
         SimpleDateFormat formatter = new SimpleDateFormat(GsonUtil.DATE_PATTEN);
         ParsePosition pos = new ParsePosition(0);

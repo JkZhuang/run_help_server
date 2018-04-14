@@ -9,6 +9,7 @@ import com.google.gson.GsonBuilder;
 public class GsonUtil {
 
 	public static final String DATE_PATTEN = "yyyy-MM-dd HH:mm:ss";
+	public static final String DATE_FILE_PATTEN = "yyyy-MM-dd-HH-mm-ss";
 
 	public static String toJson(Object obj) {
 		GsonBuilder builder = new GsonBuilder().setDateFormat(DATE_PATTEN);

@@ -1,5 +1,6 @@
 package com.zjk.control;
 
+import com.zjk.common.DefList;
 import com.zjk.entity.UserInfo;
 import com.zjk.param.ChangeUserInfoParam;
 import com.zjk.param.LoginParam;
@@ -9,11 +10,16 @@ import com.zjk.result.LoginResult;
 import com.zjk.result.RegisteredResult;
 import com.zjk.service.UserService;
 import com.zjk.util.GsonUtil;
+import com.zjk.util.UploadFileUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+
+import javax.servlet.http.HttpServletRequest;
 
 @Controller
 @RequestMapping("/user")
@@ -24,7 +30,10 @@ public class UserControl {
 
 	@RequestMapping(value = "/register")
 	@ResponseBody
-	public String register(@RequestBody RegisteredParam param) {
+	public String register(@RequestParam(value = "file") MultipartFile file,
+	                       HttpServletRequest request) {
+		RegisteredParam param = GsonUtil.toObj(request.getParameter(DefList.JSON), RegisteredParam.class);
+		param.userInfo.setHeadUrl(UploadFileUtil.upLoadFile(file, DefList.FILE_HEAD, param.userInfo.getPhone()));
 		RegisteredResult result = new RegisteredResult();
 		int status = userService.insert(param.userInfo);
 		if (status == 1) {
