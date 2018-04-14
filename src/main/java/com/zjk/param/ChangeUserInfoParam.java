@@ -5,4 +5,5 @@ import com.zjk.entity.UserInfo;
 public class ChangeUserInfoParam extends Param {
 
 	public UserInfo userInfo;
+	public String path;
 }

@@ -89,4 +89,20 @@ public class UserControl {
 		}
 		return GsonUtil.toJson(result);
 	}
+
+	@RequestMapping(value = "/changeUserInfoWithoutHead")
+	@ResponseBody
+	public String changeUserInfoWithoutHead(@RequestBody ChangeUserInfoParam param) {
+		ChangeUserInfoResult result = new ChangeUserInfoResult();
+		boolean status = userService.update(param.userInfo);
+		if (!status) {
+			result.bool = false;
+			result.status = 0;
+			result.errMsg = "修改信息失败，请稍后重试";
+		} else {
+			result.bool = true;
+			result.status = 1;
+		}
+		return GsonUtil.toJson(result);
+	}
 }
