@@ -23,13 +23,15 @@
     <delete id="deleteLikeForum" parameterType="LikeForumInfo">
         DELETE
         FROM like_forum
-        WHERE lFId = #{lFId}
+        WHERE fId = #{fId}
+        AND uId = #{uId}
     </delete>
 
     <select id="selectLikeForum" parameterType="LikeForumInfo" resultType="LikeForumInfo">
         SELECT *
         FROM like_forum
-        WHERE lFId = #{lFId}
+        WHERE fId = #{fId}
+        AND uId = #{uId}
     </select>
 
     <select id="query" resultType="ForumInfo">
