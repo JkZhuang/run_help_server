@@ -21,10 +21,14 @@ public class SportsControl {
 	@ResponseBody
 	public String uploadSportsData(@RequestBody UploadSportsDataParam param) {
 		UploadSportsDataResult result = new UploadSportsDataResult();
-		boolean status = sportsService.insert(param.sportsData);
-		if (status) {
+		int status = sportsService.insert(param.sportsData);
+		if (status == 1) {
 			result.bool = true;
 			result.status = 1;
+		} else if (status == 2){
+			result.bool = false;
+			result.status = 0;
+			result.errMsg = "您还未产生有效的运动数据哦，请运动后再上传吧";
 		} else {
 			result.bool = false;
 			result.status = 0;

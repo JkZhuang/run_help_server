@@ -8,6 +8,10 @@ public interface SportsDao {
 
 	boolean insert(SportsData sportsData);
 
+	boolean insertGranularity(SportsGranularityData sportsGranularityData);
+
+	int selectMaxSDId();
+
 	ArrayList<SportsData> querySportsData(int uId);
 
 	ArrayList<SportsGranularityData> querySportsGranularityData(int sDId);

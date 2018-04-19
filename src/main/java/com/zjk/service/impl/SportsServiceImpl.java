@@ -1,10 +1,7 @@
 package com.zjk.service.impl;
 
 import com.zjk.dao.SportsDao;
-import com.zjk.entity.RankingVersion;
-import com.zjk.entity.SportsData;
-import com.zjk.entity.SportsSuggestion;
-import com.zjk.entity.TrainingSuggestData;
+import com.zjk.entity.*;
 import com.zjk.service.SportsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,8 +14,20 @@ public class SportsServiceImpl implements SportsService {
 	@Autowired
 	private SportsDao sportsDao;
 
-	public boolean insert(SportsData sportsData) {
-		return sportsDao.insert(sportsData);
+	public int insert(SportsData sportsData) {
+		if (sportsData.getrGDList() == null || sportsData.getrGDList().size() == 0) {
+			return 2;
+		}
+		boolean bool = sportsDao.insert(sportsData);
+
+		for (SportsGranularityData sportsGranularityData : sportsData.getrGDList()) {
+			bool = sportsDao.insertGranularity(sportsGranularityData);
+			if (!bool) {
+				return 0;
+			}
+		}
+		bool = sportsDao.insert(sportsData);
+		return bool ? 1 : 0;
 	}
 
 	public ArrayList<SportsData> querySportsData(int uId) {

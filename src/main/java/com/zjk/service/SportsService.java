@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public interface SportsService {
 
-	boolean insert(SportsData sportsData);
+	int insert(SportsData sportsData);
 
 	ArrayList<SportsData> querySportsData(int uId);
 

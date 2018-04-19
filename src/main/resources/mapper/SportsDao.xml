@@ -10,6 +10,15 @@
         VALUES (#{uId},#{type},#{usedTime},#{startTime},#{endTime},#{distance},#{maxSpeed})
     </insert>
 
+    <insert id="insertGranularity" parameterType="SportsGranularityData">
+        INSERT  INTO sports_granularity(sDId,type,speed,longitude,latitude)
+        VALUES (#{sDId},#{type},#{speed},#{longitude},#{latitude})
+    </insert>
+
+    <select id="selectMaxSDId">
+        SELECT MAX (sDId)
+    </select>
+
     <select id="querySportsData" resultType="SportsData">
         SELECT * FROM sports
         WHERE uId=#{uId}
