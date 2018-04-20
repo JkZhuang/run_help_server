@@ -8,6 +8,8 @@ public interface SportsDao {
 
 	boolean insert(SportsData sportsData);
 
+	ArrayList<FallThreshold> selectFallThreshold();
+
 	boolean insertGranularity(SportsGranularityData sportsGranularityData);
 
 	int selectMaxSDId();
@@ -23,5 +25,7 @@ public interface SportsDao {
 	ArrayList<SportsSuggestion> querySportsSuggestion(int uId);
 
 	boolean updateFallThreshold(double fallThreshold);
+
+	TrainingSuggestData queryTrainingSuggestData(int uId);
 
 }

@@ -20,6 +20,10 @@ public class ForumServiceImpl implements ForumService {
 		return forumDao.insertForum(forumInfo);
 	}
 
+	public int selectForumCount(int uId) {
+		return forumDao.selectForumCount(uId);
+	}
+
 	public boolean insertCommentForum(CommentForumInfo commentForumInfo) {
 		return forumDao.insertCommentForum(commentForumInfo);
 	}

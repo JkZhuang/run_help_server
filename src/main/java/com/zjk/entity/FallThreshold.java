@@ -2,10 +2,19 @@ package com.zjk.entity;
 
 public class FallThreshold {
 
+	private int fTId;
 	private double fallThreshold;
 
 	public FallThreshold() {
 
+	}
+
+	public int getfTId() {
+		return fTId;
+	}
+
+	public void setfTId(int fTId) {
+		this.fTId = fTId;
 	}
 
 	public double getFallThreshold() {
@@ -19,7 +28,8 @@ public class FallThreshold {
 	@Override
 	public String toString() {
 		return "FallThreshold{" +
-				"fallThreshold=" + fallThreshold +
+				"fTId=" + fTId +
+				", fallThreshold=" + fallThreshold +
 				'}';
 	}
 }

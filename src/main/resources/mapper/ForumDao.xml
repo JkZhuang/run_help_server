@@ -10,6 +10,12 @@
         VALUES (#{uId},#{headPhotoUrl},#{userName},#{content},#{photoUrl},#{time})
     </insert>
 
+    <select id="selectForumCount" resultType="int">
+        SELECT COUNT(*)
+        FROM forum
+        WHERE uId = #{uId}
+    </select>
+
     <insert id="insertCommentForum" parameterType="CommentForumInfo">
         INSERT INTO comment_forum(fId,uId,userName,tUId,tUserName,content,time)
         VALUES (#{fId},#{uId},#{userName},#{tUId},#{tUserName},#{content},#{time})

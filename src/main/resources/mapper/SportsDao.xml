@@ -9,6 +9,11 @@
         INSERT  INTO  sports(uId,type,usedTime,startTime,endTime,distance,maxSpeed)
         VALUES (#{uId},#{type},#{usedTime},#{startTime},#{endTime},#{distance},#{maxSpeed})
     </insert>
+
+    <select id="selectFallThreshold" resultType="FallThreshold">
+        SELECT *
+        FROM fall_threshold
+    </select>
     
     <select id="selectMaxSDId" resultType="int">
         SELECT MAX(sDId)
@@ -47,5 +52,10 @@
     <update id="updateFallThreshold" parameterType="double">
         update fall_threshold set fallThreshold=#{fallThreshold}
     </update>
+
+    <select id="queryTrainingSuggestData" resultType="TrainingSuggestData">
+        SELECT * FROM sports_suggest_data
+        WHERE uId=#{uId}
+    </select>
 
 </mapper>

@@ -33,6 +33,10 @@ public class SportsServiceImpl implements SportsService {
 		return bool ? 1 : 0;
 	}
 
+	public ArrayList<FallThreshold> selectFallThreshold() {
+		return sportsDao.selectFallThreshold();
+	}
+
 	public ArrayList<SportsData> querySportsData(int uId) {
 		ArrayList<SportsData> sportsDatas = sportsDao.querySportsData(uId);
 		if (sportsDatas == null) {
@@ -58,5 +62,9 @@ public class SportsServiceImpl implements SportsService {
 
 	public boolean updateFallThreshold(double fallThreshold) {
 		return sportsDao.updateFallThreshold(fallThreshold);
+	}
+
+	public TrainingSuggestData queryTrainingSuggestData(int uId) {
+		return sportsDao.queryTrainingSuggestData(uId);
 	}
 }

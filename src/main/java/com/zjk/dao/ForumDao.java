@@ -10,6 +10,8 @@ public interface ForumDao {
 
 	boolean insertForum(ForumInfo forumInfo);
 
+	int selectForumCount(int uId);
+
 	boolean insertCommentForum(CommentForumInfo commentForumInfo);
 
 	boolean insertLikeForum(LikeForumInfo likeForumInfo);

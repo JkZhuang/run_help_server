@@ -1,15 +1,14 @@
 package com.zjk.service;
 
-import com.zjk.entity.RankingVersion;
-import com.zjk.entity.SportsData;
-import com.zjk.entity.SportsSuggestion;
-import com.zjk.entity.TrainingSuggestData;
+import com.zjk.entity.*;
 
 import java.util.ArrayList;
 
 public interface SportsService {
 
 	int insert(SportsData sportsData);
+
+	ArrayList<FallThreshold> selectFallThreshold();
 
 	ArrayList<SportsData> querySportsData(int uId);
 
@@ -20,4 +19,6 @@ public interface SportsService {
 	ArrayList<SportsSuggestion> querySportsSuggestion(int uId);
 
 	boolean updateFallThreshold(double fallThreshold);
+
+	TrainingSuggestData queryTrainingSuggestData(int uId);
 }
