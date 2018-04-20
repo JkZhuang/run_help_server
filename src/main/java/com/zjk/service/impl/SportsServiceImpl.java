@@ -19,14 +19,17 @@ public class SportsServiceImpl implements SportsService {
 			return 2;
 		}
 		boolean bool = sportsDao.insert(sportsData);
-
+		if (!bool) {
+			return 0;
+		}
+		int sDId = sportsDao.selectMaxSDId();
 		for (SportsGranularityData sportsGranularityData : sportsData.getrGDList()) {
+			sportsGranularityData.setsDId(sDId);
 			bool = sportsDao.insertGranularity(sportsGranularityData);
 			if (!bool) {
 				return 0;
 			}
 		}
-		bool = sportsDao.insert(sportsData);
 		return bool ? 1 : 0;
 	}
 
