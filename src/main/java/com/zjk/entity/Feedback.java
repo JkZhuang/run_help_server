@@ -5,7 +5,7 @@ public class Feedback {
 	private int fbId;
 	private int uId; // UserInfo外键
 	private String content;
-	private String contack;
+	private String contact;
 
 	public Feedback() {
 	}
@@ -34,12 +34,12 @@ public class Feedback {
 		this.content = content;
 	}
 
-	public String getContack() {
-		return contack;
+	public String getContact() {
+		return contact;
 	}
 
-	public void setContack(String contack) {
-		this.contack = contack;
+	public void setContact(String contact) {
+		this.contact = contact;
 	}
 
 	@Override
@@ -48,7 +48,7 @@ public class Feedback {
 				"fbId=" + fbId +
 				", uId=" + uId +
 				", content='" + content + '\'' +
-				", contack='" + contack + '\'' +
+				", contact='" + contact + '\'' +
 				'}';
 	}
 }

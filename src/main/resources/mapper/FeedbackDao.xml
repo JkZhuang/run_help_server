@@ -6,8 +6,8 @@
 <mapper namespace="com.zjk.dao.FeedbackDao">
 
     <insert id="insert" parameterType="Feedback">
-       INSERT  INTO  feedback(mId,content,contact)
-       VALUES(#{mId},#{content},#{contack})
+       INSERT  INTO  feedback(uId,content,contact)
+       VALUES(#{uId},#{content},#{contact})
     </insert>
 
     <select id="query" resultType="Feedback">
