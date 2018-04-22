@@ -35,7 +35,7 @@ public class ConfigControl {
 		} else {
 			result.fallThreshold = null;
 		}
-		result.trainingSuggestData = sportsService.queryUserSportsSuggesttedData(param.uId);
+		result.trainingSuggestDataArrayList = sportsService.queryUserSportsSuggesttedData(param.uId);
 		return GsonUtil.toJson(result);
 	}
 }

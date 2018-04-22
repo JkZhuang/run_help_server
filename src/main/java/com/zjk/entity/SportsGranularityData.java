@@ -1,10 +1,13 @@
 package com.zjk.entity;
 
+import java.util.Date;
+
 public class SportsGranularityData {
 
 	private int sGDId;
 	private int sDId; // SportsData外键
 	private int type;
+	private Date time;
 	private double speed; // 瞬时速度
 	private double longitude; // 经度
 	private double latitude; // 纬度
@@ -37,6 +40,14 @@ public class SportsGranularityData {
 		this.type = type;
 	}
 
+	public Date getTime() {
+		return time;
+	}
+
+	public void setTime(Date time) {
+		this.time = time;
+	}
+
 	public double getSpeed() {
 		return speed;
 	}
@@ -67,6 +78,7 @@ public class SportsGranularityData {
 				"sGDId=" + sGDId +
 				", sDId=" + sDId +
 				", type=" + type +
+				", time=" + time +
 				", speed=" + speed +
 				", longitude=" + longitude +
 				", latitude=" + latitude +

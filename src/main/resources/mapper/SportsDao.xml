@@ -21,8 +21,8 @@
     </select>
 
     <insert id="insertGranularity" parameterType="SportsGranularityData">
-        INSERT  INTO sports_granularity(sDId,type,speed,longitude,latitude)
-        VALUES (#{sDId},#{type},#{speed},#{longitude},#{latitude})
+        INSERT  INTO sports_granularity(sDId,type,time,speed,longitude,latitude)
+        VALUES (#{sDId},#{type},#{time},#{speed},#{longitude},#{latitude})
     </insert>
 
     <select id="querySportsData" resultType="SportsData">

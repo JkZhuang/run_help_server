@@ -20,7 +20,7 @@ public interface SportsDao {
 
 	ArrayList<RankingVersion> queryRankingVersion();
 
-	TrainingSuggestData queryUserSportsSuggestedData(int uId);
+	ArrayList<TrainingSuggestData> queryUserSportsSuggestedData(int uId);
 
 	ArrayList<SportsSuggestion> querySportsSuggestion(int uId);
 

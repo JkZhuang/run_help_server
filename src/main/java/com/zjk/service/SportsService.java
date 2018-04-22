@@ -14,7 +14,7 @@ public interface SportsService {
 
 	ArrayList<RankingVersion> queryRankingVersion();
 
-	TrainingSuggestData queryUserSportsSuggesttedData(int uId);
+	ArrayList<TrainingSuggestData> queryUserSportsSuggesttedData(int uId);
 
 	ArrayList<SportsSuggestion> querySportsSuggestion(int uId);
 

@@ -52,7 +52,7 @@ public class SportsServiceImpl implements SportsService {
 		return sportsDao.queryRankingVersion();
 	}
 
-	public TrainingSuggestData queryUserSportsSuggesttedData(int uId) {
+	public ArrayList<TrainingSuggestData> queryUserSportsSuggesttedData(int uId) {
 		return sportsDao.queryUserSportsSuggestedData(uId);
 	}
 

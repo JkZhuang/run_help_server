@@ -57,7 +57,7 @@ public class SportsControl {
 	@ResponseBody
 	public String getUserSportsSuggestedData(@RequestBody GetUserSportsSuggestedDataParam param) {
 		GetUserSportsSuggestedDataResult result = new GetUserSportsSuggestedDataResult();
-		result.trainingSuggestData = sportsService.queryUserSportsSuggesttedData(param.uId);
+		result.trainingSuggestDataArrayList = sportsService.queryUserSportsSuggesttedData(param.uId);
 		return GsonUtil.toJson(result);
 	}
 

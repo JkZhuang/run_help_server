@@ -4,12 +4,9 @@ public class TrainingSuggestData {
 
 	private int tSDId;
 	private int uId; // UserInfo外键
-	private double maxWalkSpeed;
-	private double maxWalkTime;
-	private double maxRunSpeed;
-	private double maxRunTime;
-	private double maxRidingSpeed;
-	private double maxRidingTime;
+	private int type;
+	private double maxSpeed;
+	private double maxTime;
 
 	public TrainingSuggestData() {
 
@@ -31,52 +28,28 @@ public class TrainingSuggestData {
 		this.uId = uId;
 	}
 
-	public double getMaxWalkSpeed() {
-		return maxWalkSpeed;
+	public int getType() {
+		return type;
 	}
 
-	public void setMaxWalkSpeed(double maxWalkSpeed) {
-		this.maxWalkSpeed = maxWalkSpeed;
+	public void setType(int type) {
+		this.type = type;
 	}
 
-	public double getMaxWalkTime() {
-		return maxWalkTime;
+	public double getMaxSpeed() {
+		return maxSpeed;
 	}
 
-	public void setMaxWalkTime(double maxWalkTime) {
-		this.maxWalkTime = maxWalkTime;
+	public void setMaxSpeed(double maxSpeed) {
+		this.maxSpeed = maxSpeed;
 	}
 
-	public double getMaxRunSpeed() {
-		return maxRunSpeed;
+	public double getMaxTime() {
+		return maxTime;
 	}
 
-	public void setMaxRunSpeed(double maxRunSpeed) {
-		this.maxRunSpeed = maxRunSpeed;
-	}
-
-	public double getMaxRunTime() {
-		return maxRunTime;
-	}
-
-	public void setMaxRunTime(double maxRunTime) {
-		this.maxRunTime = maxRunTime;
-	}
-
-	public double getMaxRidingSpeed() {
-		return maxRidingSpeed;
-	}
-
-	public void setMaxRidingSpeed(double maxRidingSpeed) {
-		this.maxRidingSpeed = maxRidingSpeed;
-	}
-
-	public double getMaxRidingTime() {
-		return maxRidingTime;
-	}
-
-	public void setMaxRidingTime(double maxRidingTime) {
-		this.maxRidingTime = maxRidingTime;
+	public void setMaxTime(double maxTime) {
+		this.maxTime = maxTime;
 	}
 
 	@Override
@@ -84,12 +57,9 @@ public class TrainingSuggestData {
 		return "TrainingSuggestData{" +
 				"tSDId=" + tSDId +
 				", uId=" + uId +
-				", maxWalkSpeed=" + maxWalkSpeed +
-				", maxWalkTime=" + maxWalkTime +
-				", maxRunSpeed=" + maxRunSpeed +
-				", maxRunTime=" + maxRunTime +
-				", maxRidingSpeed=" + maxRidingSpeed +
-				", maxRidingTime=" + maxRidingTime +
+				", type=" + type +
+				", maxSpeed=" + maxSpeed +
+				", maxTime=" + maxTime +
 				'}';
 	}
 }
