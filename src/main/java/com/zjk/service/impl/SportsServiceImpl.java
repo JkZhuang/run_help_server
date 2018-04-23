@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 
@@ -95,13 +96,15 @@ public class SportsServiceImpl implements SportsService {
 				rankingVersion.setDistance(0);
 			}
 		}
-		Comparator<RankingVersion> comparator = (r1, r2) -> {
-			if (r1.getDistance() < r2.getDistance()) {
-				return 1;
+		Comparator<RankingVersion> comparator = new Comparator<RankingVersion>() {
+			public int compare(RankingVersion o1, RankingVersion o2) {
+				if (o1.getDistance() < o2.getDistance()) {
+					return 1;
+				}
+				return -1;
 			}
-			return -1;
 		};
-		rankingVersions.sort(comparator);
+		Collections.sort(rankingVersions, comparator);
 		for (int index = 0; index < rankingVersions.size(); index++) {
 			rankingVersions.get(index).setRanking(index + 1);
 		}
