@@ -3,10 +3,7 @@ package com.zjk.test;
 import com.zjk.entity.SportsData;
 import com.zjk.entity.SportsGranularityData;
 import com.zjk.entity.UserInfo;
-import com.zjk.param.GetConfigParam;
-import com.zjk.param.LoginParam;
-import com.zjk.param.RegisteredParam;
-import com.zjk.param.UploadSportsDataParam;
+import com.zjk.param.*;
 import com.zjk.util.DateUtil;
 import com.zjk.util.GsonUtil;
 import org.apache.http.HttpEntity;
@@ -27,7 +24,7 @@ public class Test {
 	public static org.apache.http.client.HttpClient httpclient = HttpClients.createDefault();
 //    public static String url = "http://192.168.43.4:8080/user/register";
 //	public static String url = "http://172.27.36.1:8080/user/login";
-	public static String url = "http://172.27.36.1:8080/config/getConfig";
+	public static String url = "http://172.27.36.1:8080/sports/getRankingVersion";
 
 	public static void main(String[] args) {
 
@@ -53,7 +50,7 @@ public class Test {
 //		sportsData.setUsedTime(30);
 //		sportsData.setStartTime(DateUtil.stringToDate(DateUtil.dateToString(new Date())));
 //		sportsData.setEndTime(DateUtil.stringToDate(DateUtil.dateToString(new Date())));
-//		sportsData.setDistance(4);
+//		sportsData.setDistance(8);
 //		sportsData.setMaxSpeed(8);
 //
 //		ArrayList<SportsGranularityData> list = new ArrayList<SportsGranularityData>();
@@ -73,8 +70,11 @@ public class Test {
 //		sportsData.setrGDList(list);
 //		param.sportsData = sportsData;
 
-		GetConfigParam param = new GetConfigParam();
-		param.uId = 6;
+//		GetConfigParam param = new GetConfigParam();
+//		param.uId = 6;
+
+		GetRankingVersionParam param = new GetRankingVersionParam();
+		param.uId = 1;
 
 		StringEntity se;
 		try {

@@ -109,7 +109,7 @@ public class SportsServiceImpl implements SportsService {
 			rankingVersions.get(index).setRanking(index + 1);
 		}
 
-		return sportsDao.queryRankingVersion();
+		return rankingVersions;
 	}
 
 	public ArrayList<TrainingSuggestData> queryUserSportsSuggesttedData(int uId) {
