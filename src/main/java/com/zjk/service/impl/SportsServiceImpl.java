@@ -90,11 +90,14 @@ public class SportsServiceImpl implements SportsService {
 		if (rankingVersions == null) {
 			return null;
 		}
-		// 过滤一天前的数据
+		// 过滤一天前的数据，添加返回的字段
 		for (RankingVersion rankingVersion : rankingVersions) {
 			if (DateUtil.isYesterday(rankingVersion.getTime())) {
 				rankingVersion.setDistance(0);
 			}
+			UserInfo userInfo = userDao.queryByUId(rankingVersion.getuId());
+			rankingVersion.setHeadUrl(userInfo.getHeadUrl());
+			rankingVersion.setUserName(userInfo.getUserName());
 		}
 		Comparator<RankingVersion> comparator = new Comparator<RankingVersion>() {
 			public int compare(RankingVersion o1, RankingVersion o2) {

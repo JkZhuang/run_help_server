@@ -24,7 +24,7 @@ public class Test {
 	public static org.apache.http.client.HttpClient httpclient = HttpClients.createDefault();
 //    public static String url = "http://192.168.43.4:8080/user/register";
 //	public static String url = "http://172.27.36.1:8080/user/login";
-	public static String url = "http://172.27.36.1:8080/sports/getRankingVersion";
+	public static String url = "http://172.27.36.1:8080/sports/uploadSportsData";
 
 	public static void main(String[] args) {
 
@@ -43,38 +43,35 @@ public class Test {
 //		userInfo.setPassword("123456");
 //		param.userInfo = userInfo;
 
-//		UploadSportsDataParam param = new UploadSportsDataParam();
-//		SportsData sportsData = new SportsData();
-//		sportsData.setuId(2);
-//		sportsData.setType(1);
-//		sportsData.setUsedTime(30);
-//		sportsData.setStartTime(DateUtil.stringToDate(DateUtil.dateToString(new Date())));
-//		sportsData.setEndTime(DateUtil.stringToDate(DateUtil.dateToString(new Date())));
-//		sportsData.setDistance(8);
-//		sportsData.setMaxSpeed(8);
-//
-//		ArrayList<SportsGranularityData> list = new ArrayList<SportsGranularityData>();
-//		SportsGranularityData data1 = new SportsGranularityData();
-//		data1.setType(1);
-//		data1.setSpeed(6);
-//		data1.setLatitude(2.02);
-//		data1.setLongitude(5.156);
-//		SportsGranularityData data2 = new SportsGranularityData();
-//		data2.setType(1);
-//		data2.setSpeed(3);
-//		data2.setLatitude(4.052);
-//		data2.setLongitude(52.1056);
-//		list.add(data1);
-//		list.add(data2);
-//
-//		sportsData.setrGDList(list);
-//		param.sportsData = sportsData;
+		UploadSportsDataParam param = new UploadSportsDataParam();
+		SportsData sportsData = new SportsData();
+		sportsData.setuId(1);
+		sportsData.setType(3);
+		sportsData.setUsedTime(40);
+		sportsData.setStartTime(DateUtil.stringToDate(DateUtil.dateToString(new Date())));
+		sportsData.setEndTime(DateUtil.stringToDate(DateUtil.dateToString(new Date())));
+		sportsData.setDistance(16);
+		sportsData.setMaxSpeed(20);
+
+		ArrayList<SportsGranularityData> list = new ArrayList<SportsGranularityData>();
+
+		for (int i = 0; i < 20; i++) {
+			SportsGranularityData data = new SportsGranularityData();
+			data.setType(3);
+			data.setSpeed(2 + i);
+			data.setLatitude(2.02);
+			data.setLongitude(5.156);
+			list.add(data);
+		}
+
+		sportsData.setrGDList(list);
+		param.sportsData = sportsData;
 
 //		GetConfigParam param = new GetConfigParam();
 //		param.uId = 6;
 
-		GetRankingVersionParam param = new GetRankingVersionParam();
-		param.uId = 1;
+//		GetRankingVersionParam param = new GetRankingVersionParam();
+//		param.uId = 1;
 
 		StringEntity se;
 		try {
