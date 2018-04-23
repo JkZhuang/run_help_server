@@ -39,6 +39,21 @@
         SELECT * FROM ranking_version
     </select>
 
+    <insert id="insertRV" parameterType="RankingVersion">
+        INSERT INTO ranking_version(uId,userName,headUrl,ranking,time,distance)
+        VALUES (#{uId},#{userName},#{headUrl},#{ranking},#{time},#{distance})
+    </insert>
+
+    <select id="queryRVByUId" resultType="RankingVersion">
+        SELECT * FROM ranking_version
+        WHERE uId=#{uId}
+    </select>
+
+    <update id="updateRV" parameterType="RankingVersion">
+        UPDATE ranking_version SET time=#{time},distance=#{distance}
+        WHERE rVId=#{rVId}
+    </update>
+
     <select id="queryUserSportsSuggestedData" resultType="TrainingSuggestData">
         SELECT * FROM sports_suggest_data
         WHERE uId=#{uId}

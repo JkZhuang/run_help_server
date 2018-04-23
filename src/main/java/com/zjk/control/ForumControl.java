@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Collections;
 
 @Controller
 @RequestMapping("/forum")
@@ -85,6 +86,7 @@ public class ForumControl {
 	public String getForum(@RequestBody GetForumParam param) {
 		GetForumResult result = new GetForumResult();
 		result.forumInfos = forumService.query(param.uId, param.lastFId);
+		Collections.reverse(result.forumInfos);
 		return GsonUtil.toJson(result);
 	}
 }

@@ -8,5 +8,7 @@ public interface UserDao {
 
 	UserInfo query(UserInfo userInfo);
 
+	UserInfo queryByUId(int uId);
+
 	boolean update(UserInfo userInfo);
 }

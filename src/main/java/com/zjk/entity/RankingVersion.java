@@ -15,6 +15,7 @@ public class RankingVersion {
 
 	@DateTimeFormat(pattern = GsonUtil.DATE_PATTEN)
 	private Date time;
+	private double distance;
 
 	public RankingVersion() {
 
@@ -68,6 +69,14 @@ public class RankingVersion {
 		this.time = time;
 	}
 
+	public double getDistance() {
+		return distance;
+	}
+
+	public void setDistance(double distance) {
+		this.distance = distance;
+	}
+
 	@Override
 	public String toString() {
 		return "RankingVersion{" +
@@ -77,6 +86,7 @@ public class RankingVersion {
 				", headUrl='" + headUrl + '\'' +
 				", ranking=" + ranking +
 				", time=" + time +
+				", distance=" + distance +
 				'}';
 	}
 }

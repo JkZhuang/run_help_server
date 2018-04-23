@@ -20,6 +20,12 @@ public interface SportsDao {
 
 	ArrayList<RankingVersion> queryRankingVersion();
 
+	boolean insertRV(RankingVersion rankingVersion);
+
+	RankingVersion queryRVByUId(int uId);
+
+	boolean updateRV(RankingVersion rankingVersion);
+
 	ArrayList<TrainingSuggestData> queryUserSportsSuggestedData(int uId);
 
 	ArrayList<SportsSuggestion> querySportsSuggestion(int uId);

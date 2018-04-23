@@ -25,4 +25,17 @@ public class DateUtil {
         ParsePosition pos = new ParsePosition(0);
         return formatter.parse(strDate, pos);
     }
+
+    public static boolean isYesterday(Date date) {
+        Date curDate = new Date();
+        String standardDate = dateToString(curDate);
+        standardDate = standardDate.split(" ")[0];
+        standardDate += " 00:00:00";
+        try {
+            curDate = stringToDate(standardDate);
+            return date.before(curDate);
+        } catch (NullPointerException e) {
+            return true;
+        }
+    }
 }

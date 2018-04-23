@@ -21,5 +21,10 @@
         SELECT * FROM  user
         WHERE phone=#{phone}
     </select>
+    
+    <select id="queryByUId" resultType="UserInfo">
+        SELECT * FROM USER
+        WHERE uId=#{uId}
+    </select>
 
 </mapper>
