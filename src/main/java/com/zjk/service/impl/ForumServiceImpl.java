@@ -1,5 +1,6 @@
 package com.zjk.service.impl;
 
+import com.zjk.common.DefForumData;
 import com.zjk.dao.ForumDao;
 import com.zjk.dao.UserDao;
 import com.zjk.entity.CommentForumInfo;
@@ -11,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 @Service
 public class ForumServiceImpl implements ForumService {
@@ -43,10 +45,11 @@ public class ForumServiceImpl implements ForumService {
 	}
 
 	public ArrayList<ForumInfo> query(int uId, int lastFId) {
-		ArrayList<ForumInfo> forumInfos = forumDao.query(uId);
-		if (forumInfos == null) {
+		ArrayList<ForumInfo> infos = forumDao.query(uId);
+		if (infos == null) {
 			return null;
 		}
+		ArrayList<ForumInfo> forumInfos = getResultForum(infos, lastFId);
 		for (ForumInfo info : forumInfos) {
 			UserInfo userInfo = userDao.queryByUId(info.getuId());
 			info.setHeadPhotoUrl(userInfo.getHeadUrl());
@@ -74,5 +77,32 @@ public class ForumServiceImpl implements ForumService {
 			info.setlFList(lFList);
 		}
 		return forumInfos;
+	}
+
+	private ArrayList<ForumInfo> getResultForum(ArrayList<ForumInfo> infos, int lastFId) {
+		ArrayList<ForumInfo> forumInfos = new ArrayList<ForumInfo>();
+		Collections.reverse(infos);
+		if (lastFId == 0) {
+			int endIndex = DefForumData.FETCH_COUNT < infos.size() ? DefForumData.FETCH_COUNT : infos.size();
+			for (int i = 0; i < endIndex; i++) {
+				forumInfos.add(infos.get(i));
+			}
+		} else {
+			int index = indexOfForumList(infos, lastFId);
+			int endIndex = (index + DefForumData.FETCH_COUNT + 1) < infos.size() ? (index + DefForumData.FETCH_COUNT + 1) : infos.size();
+			for (int i = index + 1; i < endIndex; i++) {
+				forumInfos.add(infos.get(i));
+			}
+		}
+		return forumInfos;
+	}
+
+	private int indexOfForumList(ArrayList<ForumInfo> infos, int lastFIf) {
+		for (int i = 0; i < infos.size(); i++) {
+			if (lastFIf == infos.get(i).getfId()) {
+				return i;
+			}
+		}
+		return -1;
 	}
 }
