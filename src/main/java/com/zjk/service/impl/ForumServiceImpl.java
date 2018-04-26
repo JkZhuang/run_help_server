@@ -62,7 +62,7 @@ public class ForumServiceImpl implements ForumService {
 					commentForumInfo.setUserName(userMain.getUserName());
 
 					UserInfo userTarget = userDao.queryByUId(commentForumInfo.gettUId());
-					commentForumInfo.setUserName(userTarget.getUserName());
+					commentForumInfo.settUserName(userTarget.getUserName());
 				}
 			}
 			info.setcFList(cFList);
