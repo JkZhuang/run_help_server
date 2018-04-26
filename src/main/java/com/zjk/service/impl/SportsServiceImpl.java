@@ -73,7 +73,10 @@ public class SportsServiceImpl implements SportsService {
 		}
 
 		// 更新建议数据
-		TrainingSuggestData trainingSuggestData = sportsDao.querySuggestedData(sportsData.getuId(), sportsData.getType());
+		TrainingSuggestData trainingSuggestData = new TrainingSuggestData();
+		trainingSuggestData.setuId(sportsData.getuId());
+		trainingSuggestData.setType(sportsData.getType());
+		trainingSuggestData = sportsDao.querySuggestedData(trainingSuggestData);
 		if (trainingSuggestData != null) {
 			if (trainingSuggestData.getMaxSpeed() < sportsData.getMaxSpeed()) {
 				trainingSuggestData.setMaxSpeed(sportsData.getMaxSpeed());

@@ -30,7 +30,7 @@ public interface SportsDao {
 
 	boolean insertSuggestedData(TrainingSuggestData trainingSuggestData);
 
-	TrainingSuggestData querySuggestedData(int uId, int type);
+	TrainingSuggestData querySuggestedData(TrainingSuggestData trainingSuggestData);
 
 	boolean updateSuggestedData(TrainingSuggestData trainingSuggestData);
 

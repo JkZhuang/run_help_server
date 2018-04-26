@@ -46,21 +46,21 @@ public class Test {
 		UploadSportsDataParam param = new UploadSportsDataParam();
 		SportsData sportsData = new SportsData();
 		sportsData.setuId(1);
-		sportsData.setType(3);
-		sportsData.setUsedTime(40);
+		sportsData.setType(2);
+		sportsData.setUsedTime(30);
 		sportsData.setStartTime(DateUtil.stringToDate(DateUtil.dateToString(new Date())));
 		sportsData.setEndTime(DateUtil.stringToDate(DateUtil.dateToString(new Date())));
-		sportsData.setDistance(16);
-		sportsData.setMaxSpeed(20);
+		sportsData.setDistance(20);
+		sportsData.setMaxSpeed(12);
 
 		ArrayList<SportsGranularityData> list = new ArrayList<SportsGranularityData>();
 
 		for (int i = 0; i < 20; i++) {
 			SportsGranularityData data = new SportsGranularityData();
-			data.setType(3);
-			data.setSpeed(2 + i);
-			data.setLatitude(2.02);
-			data.setLongitude(5.156);
+			data.setType(2);
+			data.setSpeed(140 - i);
+			data.setLatitude(2.02 + i);
+			data.setLongitude(5.156 + 2 * i);
 			list.add(data);
 		}
 

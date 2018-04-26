@@ -61,10 +61,10 @@
 
     <insert id="insertSuggestedData" parameterType="TrainingSuggestData">
         INSERT INTO sports_suggest_data(uId,type,maxSpeed,maxTime)
-        VALUES (#{uId},#{type},#{maxSeed},#{maxTime})
+        VALUES (#{uId},#{type},#{maxSpeed},#{maxTime})
     </insert>
 
-    <select id="querySuggestedData" resultType="TrainingSuggestData">
+    <select id="querySuggestedData" parameterType="TrainingSuggestData" resultType="TrainingSuggestData">
         SELECT * FROM sports_suggest_data
         WHERE uId=#{uId}
         AND type=#{type}
