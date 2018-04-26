@@ -24,14 +24,17 @@ public class SportsServiceImpl implements SportsService {
 	private UserDao userDao;
 
 	public int insert(SportsData sportsData) {
+		// 判断数据的有效性
 		if (sportsData.getrGDList() == null || sportsData.getrGDList().size() == 0) {
 			return 2;
 		}
+
 		// 插入总的数据
 		boolean bool = sportsDao.insert(sportsData);
 		if (!bool) {
 			return 0;
 		}
+
 		// 插入粒度数据
 		int sDId = sportsDao.selectMaxSDId();
 		for (SportsGranularityData sportsGranularityData : sportsData.getrGDList()) {
@@ -41,6 +44,7 @@ public class SportsServiceImpl implements SportsService {
 				return 0;
 			}
 		}
+
 		// 更新排行榜单的数据
 		RankingVersion rankingVersion = sportsDao.queryRVByUId(sportsData.getuId());
 		if (rankingVersion != null) {
@@ -67,6 +71,26 @@ public class SportsServiceImpl implements SportsService {
 			rankingVersion.setDistance(sportsData.getDistance());
 			sportsDao.insertRV(rankingVersion);
 		}
+
+		// 更新建议数据
+		TrainingSuggestData trainingSuggestData = sportsDao.querySuggestedData(sportsData.getuId(), sportsData.getType());
+		if (trainingSuggestData != null) {
+			if (trainingSuggestData.getMaxSpeed() < sportsData.getMaxSpeed()) {
+				trainingSuggestData.setMaxSpeed(sportsData.getMaxSpeed());
+			}
+			if (trainingSuggestData.getMaxTime() < sportsData.getUsedTime()) {
+				trainingSuggestData.setMaxTime(sportsData.getUsedTime());
+			}
+			sportsDao.updateSuggestedData(trainingSuggestData);
+		} else {
+			trainingSuggestData = new TrainingSuggestData();
+			trainingSuggestData.setuId(sportsData.getuId());
+			trainingSuggestData.setType(sportsData.getType());
+			trainingSuggestData.setMaxSpeed(sportsData.getMaxSpeed());
+			trainingSuggestData.setMaxTime(sportsData.getUsedTime());
+			sportsDao.insertSuggestedData(trainingSuggestData);
+		}
+
 		return 1;
 	}
 

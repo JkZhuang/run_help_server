@@ -59,6 +59,23 @@
         WHERE uId=#{uId}
     </select>
 
+    <insert id="insertSuggestedData" parameterType="TrainingSuggestData">
+        INSERT INTO sports_suggest_data(uId,type,maxSpeed,maxTime)
+        VALUES (#{uId},#{type},#{maxSeed},#{maxTime})
+    </insert>
+
+    <select id="querySuggestedData" resultType="TrainingSuggestData">
+        SELECT * FROM sports_suggest_data
+        WHERE uId=#{uId}
+        AND type=#{type}
+    </select>
+
+    <update id="updateSuggestedData" parameterType="TrainingSuggestData">
+        UPDATE sports_suggest_data SET maxSpeed=#{maxSpeed},maxTime=#{maxTime}
+        WHERE uId=#{uId}
+        AND type=#{type}
+    </update>
+
     <select id="querySportsSuggestion" resultType="sportsSuggestion">
         SELECT * FROM sports_suggestion
         WHERE uId=#{uId}
