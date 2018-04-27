@@ -43,7 +43,11 @@ public class UserControl {
 			result.bool = false;
 			result.status = 2;
 			result.errMsg = "您输入的账号已注册，请直接登录";
-		} else {
+		} else if (status == 3) {
+			result.bool = false;
+			result.status = 3;
+			result.errMsg = "注册信息格式有误，请查证后再注册";
+		}else {
 			result.bool = false;
 			result.status = 0;
 			result.errMsg = "注册失败，请稍后重试";

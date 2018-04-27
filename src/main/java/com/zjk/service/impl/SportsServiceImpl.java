@@ -25,7 +25,9 @@ public class SportsServiceImpl implements SportsService {
 
 	public int insert(SportsData sportsData) {
 		// 判断数据的有效性
-		if (sportsData.getrGDList() == null || sportsData.getrGDList().size() == 0) {
+		if (sportsData.getrGDList() == null
+				|| sportsData.getrGDList().size() == 0
+				|| userDao.queryByUId(sportsData.getuId()) == null) {
 			return 2;
 		}
 

@@ -25,4 +25,6 @@ public interface ForumDao {
 	ArrayList<CommentForumInfo> queryComment(int fId);
 
 	ArrayList<LikeForumInfo> queryLike(int fId);
+
+	ForumInfo selectForumByFId(int fId);
 }

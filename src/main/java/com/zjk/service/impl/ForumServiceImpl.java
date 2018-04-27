@@ -17,92 +17,96 @@ import java.util.Collections;
 @Service
 public class ForumServiceImpl implements ForumService {
 
-	@Autowired
-	private ForumDao forumDao;
+    @Autowired
+    private ForumDao forumDao;
 
-	@Autowired
-	private UserDao userDao;
+    @Autowired
+    private UserDao userDao;
 
-	public boolean insertForum(ForumInfo forumInfo) {
-		return forumDao.insertForum(forumInfo);
-	}
+    public boolean insertForum(ForumInfo forumInfo) {
+        return userDao.queryByUId(forumInfo.getuId()) != null && forumDao.insertForum(forumInfo);
+    }
 
-	public int selectForumCount(int uId) {
-		return forumDao.selectForumCount(uId);
-	}
+    public int selectForumCount(int uId) {
+        return forumDao.selectForumCount(uId);
+    }
 
-	public boolean insertCommentForum(CommentForumInfo commentForumInfo) {
-		return forumDao.insertCommentForum(commentForumInfo);
-	}
+    public boolean insertCommentForum(CommentForumInfo commentForumInfo) {
+        return forumDao.selectForumByFId(commentForumInfo.getfId()) != null
+                && userDao.queryByUId(commentForumInfo.getuId()) != null
+                && userDao.queryByUId(commentForumInfo.gettUId()) != null
+                && forumDao.insertCommentForum(commentForumInfo);
+    }
 
-	public boolean insertLikeForum(LikeForumInfo likeForumInfo) {
-		LikeForumInfo info = forumDao.selectLikeForum(likeForumInfo);
-		if (info == null) {
-			return forumDao.insertLikeForum(likeForumInfo);
-		} else {
-			return forumDao.deleteLikeForum(likeForumInfo);
-		}
-	}
+    public boolean insertLikeForum(LikeForumInfo likeForumInfo) {
+        LikeForumInfo info = forumDao.selectLikeForum(likeForumInfo);
+        if (info == null) {
+            return userDao.queryByUId(likeForumInfo.getuId()) != null
+                    && forumDao.selectForumByFId(likeForumInfo.getfId()) != null
+                    && forumDao.insertLikeForum(likeForumInfo);
+        }
+        return forumDao.deleteLikeForum(likeForumInfo);
+    }
 
-	public ArrayList<ForumInfo> query(int uId, int lastFId) {
-		ArrayList<ForumInfo> infos = forumDao.query(uId);
-		if (infos == null) {
-			return null;
-		}
-		ArrayList<ForumInfo> forumInfos = getResultForum(infos, lastFId);
-		for (ForumInfo info : forumInfos) {
-			UserInfo userInfo = userDao.queryByUId(info.getuId());
-			info.setHeadPhotoUrl(userInfo.getHeadUrl());
-			info.setUserName(userInfo.getUserName());
+    public ArrayList<ForumInfo> query(int uId, int lastFId) {
+        ArrayList<ForumInfo> infos = forumDao.query(uId);
+        if (infos == null) {
+            return null;
+        }
+        ArrayList<ForumInfo> forumInfos = getResultForum(infos, lastFId);
+        for (ForumInfo info : forumInfos) {
+            UserInfo userInfo = userDao.queryByUId(info.getuId());
+            info.setHeadPhotoUrl(userInfo.getHeadUrl());
+            info.setUserName(userInfo.getUserName());
 
-			ArrayList<CommentForumInfo> cFList = forumDao.queryComment(info.getfId());
-			if (cFList != null) {
-				for (CommentForumInfo commentForumInfo : cFList) {
-					UserInfo userMain = userDao.queryByUId(commentForumInfo.getuId());
-					commentForumInfo.setUserName(userMain.getUserName());
+            ArrayList<CommentForumInfo> cFList = forumDao.queryComment(info.getfId());
+            if (cFList != null) {
+                for (CommentForumInfo commentForumInfo : cFList) {
+                    UserInfo userMain = userDao.queryByUId(commentForumInfo.getuId());
+                    commentForumInfo.setUserName(userMain.getUserName());
 
-					UserInfo userTarget = userDao.queryByUId(commentForumInfo.gettUId());
-					commentForumInfo.settUserName(userTarget.getUserName());
-				}
-			}
-			info.setcFList(cFList);
+                    UserInfo userTarget = userDao.queryByUId(commentForumInfo.gettUId());
+                    commentForumInfo.settUserName(userTarget.getUserName());
+                }
+            }
+            info.setcFList(cFList);
 
-			ArrayList<LikeForumInfo> lFList = forumDao.queryLike(info.getfId());
-			if (lFList != null) {
-				for (LikeForumInfo likeForumInfo : lFList) {
-					UserInfo userLike = userDao.queryByUId(likeForumInfo.getuId());
-					likeForumInfo.setUserName(userLike.getUserName());
-				}
-			}
-			info.setlFList(lFList);
-		}
-		return forumInfos;
-	}
+            ArrayList<LikeForumInfo> lFList = forumDao.queryLike(info.getfId());
+            if (lFList != null) {
+                for (LikeForumInfo likeForumInfo : lFList) {
+                    UserInfo userLike = userDao.queryByUId(likeForumInfo.getuId());
+                    likeForumInfo.setUserName(userLike.getUserName());
+                }
+            }
+            info.setlFList(lFList);
+        }
+        return forumInfos;
+    }
 
-	private ArrayList<ForumInfo> getResultForum(ArrayList<ForumInfo> infos, int lastFId) {
-		ArrayList<ForumInfo> forumInfos = new ArrayList<ForumInfo>();
-		Collections.reverse(infos);
-		if (lastFId == 0) {
-			int endIndex = DefForumData.FETCH_COUNT < infos.size() ? DefForumData.FETCH_COUNT : infos.size();
-			for (int i = 0; i < endIndex; i++) {
-				forumInfos.add(infos.get(i));
-			}
-		} else {
-			int index = indexOfForumList(infos, lastFId);
-			int endIndex = (index + DefForumData.FETCH_COUNT + 1) < infos.size() ? (index + DefForumData.FETCH_COUNT + 1) : infos.size();
-			for (int i = index + 1; i < endIndex; i++) {
-				forumInfos.add(infos.get(i));
-			}
-		}
-		return forumInfos;
-	}
+    private ArrayList<ForumInfo> getResultForum(ArrayList<ForumInfo> infos, int lastFId) {
+        ArrayList<ForumInfo> forumInfos = new ArrayList<ForumInfo>();
+        Collections.reverse(infos);
+        if (lastFId == 0) {
+            int endIndex = DefForumData.FETCH_COUNT < infos.size() ? DefForumData.FETCH_COUNT : infos.size();
+            for (int i = 0; i < endIndex; i++) {
+                forumInfos.add(infos.get(i));
+            }
+        } else {
+            int index = indexOfForumList(infos, lastFId);
+            int endIndex = (index + DefForumData.FETCH_COUNT + 1) < infos.size() ? (index + DefForumData.FETCH_COUNT + 1) : infos.size();
+            for (int i = index + 1; i < endIndex; i++) {
+                forumInfos.add(infos.get(i));
+            }
+        }
+        return forumInfos;
+    }
 
-	private int indexOfForumList(ArrayList<ForumInfo> infos, int lastFIf) {
-		for (int i = 0; i < infos.size(); i++) {
-			if (lastFIf == infos.get(i).getfId()) {
-				return i;
-			}
-		}
-		return -1;
-	}
+    private int indexOfForumList(ArrayList<ForumInfo> infos, int lastFIf) {
+        for (int i = 0; i < infos.size(); i++) {
+            if (lastFIf == infos.get(i).getfId()) {
+                return i;
+            }
+        }
+        return -1;
+    }
 }

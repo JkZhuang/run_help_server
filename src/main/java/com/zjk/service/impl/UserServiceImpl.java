@@ -13,6 +13,9 @@ public class UserServiceImpl implements UserService {
 	private UserDao userDao;
 
 	public int insert(UserInfo userInfo) {
+		if (userInfo.getGender() < 0 || userInfo.getGender() > 2) {
+			return 3;
+		}
 		UserInfo user = userDao.query(userInfo);
 		if (user != null) {
 			return 2;

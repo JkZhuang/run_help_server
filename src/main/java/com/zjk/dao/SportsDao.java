@@ -40,4 +40,6 @@ public interface SportsDao {
 
 	TrainingSuggestData queryTrainingSuggestData(int uId);
 
+	SportsData querySportsDataBySDId(int sDId);
+
 }

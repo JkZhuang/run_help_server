@@ -90,4 +90,10 @@
         WHERE uId=#{uId}
     </select>
 
+    <select id="querySportsDataBySDId" resultType="SportsData">
+        SELECT *
+        FROM sports
+        WHERE sDId=#{sDId}
+    </select>
+
 </mapper>

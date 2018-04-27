@@ -57,4 +57,10 @@
         WHERE fId = #{fId}
     </select>
 
+    <select id="selectForumByFId" resultType="ForumInfo">
+        SELECT *
+        FROM forum
+        WHERE fId = #{fId}
+    </select>
+
 </mapper>
