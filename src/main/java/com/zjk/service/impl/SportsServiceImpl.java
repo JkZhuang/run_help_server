@@ -9,10 +9,7 @@ import com.zjk.util.DateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Date;
+import java.util.*;
 
 @Service
 public class SportsServiceImpl implements SportsService {
@@ -149,7 +146,18 @@ public class SportsServiceImpl implements SportsService {
 	}
 
 	public ArrayList<SportsSuggestion> querySportsSuggestion(int uId) {
-		return sportsDao.querySportsSuggestion(uId);
+		ArrayList<SportsSuggestion> suggestions = sportsDao.querySportsSuggestion(uId);
+		if (suggestions == null) {
+			return null;
+		}
+		Iterator<SportsSuggestion> iterator = suggestions.iterator();
+		while (iterator.hasNext()) {
+			SportsSuggestion sportsSuggestion = iterator.next();
+			if (sportsSuggestion.getStartTime().before(new Date())) {
+				iterator.remove();
+			}
+		}
+		return suggestions;
 	}
 
 	public boolean updateFallThreshold(double fallThreshold) {
