@@ -42,4 +42,10 @@ public interface SportsDao {
 
 	SportsData querySportsDataBySDId(int sDId);
 
+	SportsStatisticsData querySportsStatisticsData(SportsStatisticsData sportsStatisticsData);
+
+	boolean updateSportsStatisticsData(SportsStatisticsData sportsStatisticsData);
+
+	boolean insertSportsStatisticsData(SportsStatisticsData sportsStatisticsData);
+
 }

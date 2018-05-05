@@ -93,6 +93,31 @@ public class SportsServiceImpl implements SportsService {
 			sportsDao.insertSuggestedData(trainingSuggestData);
 		}
 
+		// 统计用户运动的总数据以及平均值等
+		int day = DateUtil.getDayIndexOfTheWeek(sportsData.getStartTime());
+		SportsStatisticsData sportsStatisticsData = new SportsStatisticsData();
+		sportsStatisticsData.setuId(sportsData.getuId());
+		sportsStatisticsData.setType(sportsData.getType());
+		sportsStatisticsData.setDay(day);
+		sportsStatisticsData = sportsDao.querySportsStatisticsData(sportsStatisticsData);
+		if (sportsStatisticsData != null) {
+			sportsStatisticsData.setAverDistance((sportsData.getDistance() + sportsStatisticsData.getAverDistance() * sportsStatisticsData.getTimes())
+					/ (double) (sportsStatisticsData.getTimes() + 1));
+			sportsStatisticsData.setAverUsedTime((sportsData.getUsedTime() + sportsStatisticsData.getAverUsedTime() * sportsStatisticsData.getTimes())
+					/ (sportsStatisticsData.getTimes() + 1));
+			sportsStatisticsData.setTimes(sportsStatisticsData.getTimes() + 1);
+			sportsDao.updateSportsStatisticsData(sportsStatisticsData);
+		} else {
+			sportsStatisticsData = new SportsStatisticsData();
+			sportsStatisticsData.setuId(sportsData.getuId());
+			sportsStatisticsData.setType(sportsData.getType());
+			sportsStatisticsData.setDay(day);
+			sportsStatisticsData.setTimes(1);
+			sportsStatisticsData.setAverUsedTime(sportsData.getUsedTime());
+			sportsStatisticsData.setAverDistance(sportsData.getDistance());
+			sportsDao.insertSportsStatisticsData(sportsStatisticsData);
+		}
+
 		return 1;
 	}
 

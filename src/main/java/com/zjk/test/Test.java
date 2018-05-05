@@ -24,7 +24,7 @@ public class Test {
 	public static org.apache.http.client.HttpClient httpclient = HttpClients.createDefault();
 //    public static String url = "http://192.168.43.4:8080/user/register";
 //	public static String url = "http://172.27.36.1:8080/user/login";
-	public static String url = "http://192.168.43.4:8080/sports/uploadSportsData";
+	public static String url = "http://172.27.36.1:8080/sports/uploadSportsData";
 
 	public static void main(String[] args) {
 
@@ -45,22 +45,22 @@ public class Test {
 
 		UploadSportsDataParam param = new UploadSportsDataParam();
 		SportsData sportsData = new SportsData();
-		sportsData.setuId(1);
-		sportsData.setType(2);
-		sportsData.setUsedTime(30);
+		sportsData.setuId(2);
+		sportsData.setType(1);
+		sportsData.setUsedTime(36);
 		sportsData.setStartTime(DateUtil.stringToDate(DateUtil.dateToString(new Date())));
 		sportsData.setEndTime(DateUtil.stringToDate(DateUtil.dateToString(new Date())));
-		sportsData.setDistance(20);
-		sportsData.setMaxSpeed(12);
+		sportsData.setDistance(24);
+		sportsData.setMaxSpeed(16);
 
 		ArrayList<SportsGranularityData> list = new ArrayList<SportsGranularityData>();
 
 		for (int i = 0; i < 20; i++) {
 			SportsGranularityData data = new SportsGranularityData();
-			data.setType(2);
-			data.setSpeed(140 - i);
-			data.setLatitude(2.02 + i);
-			data.setLongitude(5.156 + 2 * i);
+			data.setType(1);
+			data.setSpeed(100 - i);
+			data.setLatitude(3.51 + i * 2);
+			data.setLongitude(5.526 + 3 * i);
 			list.add(data);
 		}
 

@@ -96,4 +96,25 @@
         WHERE sDId=#{sDId}
     </select>
 
+    <select id="querySportsStatisticsData" parameterType="SportsStatisticsData" resultType="SportsStatisticsData">
+        SELECT *
+        FROM sports_statistics_data
+        WHERE uId=#{uId}
+        AND type=#{type}
+        AND day=#{day}
+    </select>
+
+    <update id="updateSportsStatisticsData" parameterType="SportsStatisticsData">
+        UPDATE sports_statistics_data
+        SET times=#{times},averDistance=#{averDistance},averUsedTime=#{averUsedTime}
+        WHERE uId=#{uId}
+        AND type=#{type}
+        AND day=#{day}
+    </update>
+
+    <insert id="insertSportsStatisticsData" parameterType="SportsStatisticsData">
+        INSERT INTO sports_statistics_data(uId,type,day,times,averDistance,averUsedTime)
+        VALUES (#{uId},#{type},#{day},#{times},#{averDistance},#{averUsedTime})
+    </insert>
+
 </mapper>
