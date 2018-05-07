@@ -58,6 +58,7 @@ public class Test {
 		for (int i = 0; i < 20; i++) {
 			SportsGranularityData data = new SportsGranularityData();
 			data.setType(1);
+			data.setTime(new Date());
 			data.setSpeed(100 - i);
 			data.setLatitude(3.51 + i * 2);
 			data.setLongitude(5.526 + 3 * i);
