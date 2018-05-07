@@ -24,8 +24,8 @@ public class SportsTask {
 	@Autowired
 	private SportsService sportsService;
 
-//	private static final String CRON = "0 0 24 ? * SUN";
-	private static final String CRON = "*/10 * * * * *";
+	private static final String CRON = "0 0 24 ? * SUN";
+//	private static final String CRON = "*/10 * * * * *";
 
 	private boolean bool = true;
 
