@@ -48,4 +48,9 @@ public interface SportsDao {
 
 	boolean insertSportsStatisticsData(SportsStatisticsData sportsStatisticsData);
 
+	ArrayList<SportsStatisticsData> querySportsStatisticsDataByUId(int uId);
+
+	boolean insertSportsSuggestion(SportsSuggestion sportsSuggestion);
+
+	boolean delSportsSuggestion(int sSId);
 }

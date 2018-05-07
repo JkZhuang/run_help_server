@@ -6,11 +6,17 @@ import com.zjk.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+
 @Service
 public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private UserDao userDao;
+
+	public ArrayList<UserInfo> queryAll() {
+		return userDao.queryAll();
+	}
 
 	public int insert(UserInfo userInfo) {
 		if (userInfo.getGender() < 0 || userInfo.getGender() > 2) {

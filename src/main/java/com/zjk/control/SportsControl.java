@@ -69,6 +69,14 @@ public class SportsControl {
 		return GsonUtil.toJson(result);
 	}
 
+	@RequestMapping(value = "/delSportsSuggestion")
+	@ResponseBody
+	public String delSportsSuggestion(@RequestBody DelSportsSuggestionParam param) {
+		DelSportsSuggestionResult result = new DelSportsSuggestionResult();
+		result.bool = sportsService.delSportsSuggestion(param.sSId);
+		return GsonUtil.toJson(result);
+	}
+
 	@RequestMapping(value = "/updateFallThreshold")
 	@ResponseBody
 	public String updateFallThreshold(@RequestBody UpdateFallThresholdParam param) {

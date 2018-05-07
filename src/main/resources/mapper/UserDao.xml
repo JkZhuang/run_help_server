@@ -5,8 +5,13 @@
 
 <mapper namespace="com.zjk.dao.UserDao">
 
+    <select id="queryAll" resultType="UserInfo">
+        SELECT *
+        FROM user
+    </select>
+
     <insert id="insert" parameterType="UserInfo">
-        insert INTO  user(phone,password,userName,headUrl,height,weight,birthday,gender,urgentPhone)
+        insert INTO user(phone,password,userName,headUrl,height,weight,birthday,gender,urgentPhone)
         VALUES (#{phone},#{password},#{userName},#{headUrl},#{height},#{weight},#{birthday},#{gender},#{urgentPhone})
     </insert>
 
@@ -21,7 +26,7 @@
         SELECT * FROM  user
         WHERE phone=#{phone}
     </select>
-    
+
     <select id="queryByUId" resultType="UserInfo">
         SELECT * FROM USER
         WHERE uId=#{uId}

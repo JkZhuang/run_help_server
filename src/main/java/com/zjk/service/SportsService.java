@@ -21,4 +21,10 @@ public interface SportsService {
 	boolean updateFallThreshold(double fallThreshold);
 
 	TrainingSuggestData queryTrainingSuggestData(int uId);
+
+	ArrayList<SportsStatisticsData> querySportsStatisticsDataByUId(int uId);
+
+	boolean insertSportsSuggestion(SportsSuggestion sportsSuggestion);
+
+	boolean delSportsSuggestion(int sSId);
 }

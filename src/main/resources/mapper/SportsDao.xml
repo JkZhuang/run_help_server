@@ -117,4 +117,21 @@
         VALUES (#{uId},#{type},#{day},#{times},#{averDistance},#{averUsedTime})
     </insert>
 
+    <select id="querySportsStatisticsDataByUId" resultType="SportsStatisticsData">
+        SELECT *
+        FROM sports_statistics_data
+        WHERE uId=#{uId}
+    </select>
+
+    <insert id="insertSportsSuggestion" parameterType="SportsSuggestion">
+        INSERT INTO sports_suggestion(uId,type,startTime,usedTime,distance)
+        VALUES (#{uId},#{type},#{startTime},#{usedTime},#{distance})
+    </insert>
+
+    <delete id="delSportsSuggestion">
+        DELETE
+        FROM sports_suggestion
+        WHERE sSId=#{sSId}
+    </delete>
+
 </mapper>

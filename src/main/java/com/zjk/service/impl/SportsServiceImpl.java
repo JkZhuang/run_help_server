@@ -192,4 +192,16 @@ public class SportsServiceImpl implements SportsService {
 	public TrainingSuggestData queryTrainingSuggestData(int uId) {
 		return sportsDao.queryTrainingSuggestData(uId);
 	}
+
+	public ArrayList<SportsStatisticsData> querySportsStatisticsDataByUId(int uId) {
+		return sportsDao.querySportsStatisticsDataByUId(uId);
+	}
+
+	public boolean insertSportsSuggestion(SportsSuggestion sportsSuggestion) {
+		return sportsDao.insertSportsSuggestion(sportsSuggestion);
+	}
+
+	public boolean delSportsSuggestion(int sSId) {
+		return sportsDao.delSportsSuggestion(sSId);
+	}
 }
