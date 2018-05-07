@@ -7,4 +7,5 @@ import java.util.List;
 public class GetForumResult extends Result {
 
 	public List<ForumInfo> forumInfos;
+	public boolean isLastPage;
 }

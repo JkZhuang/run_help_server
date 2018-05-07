@@ -86,6 +86,7 @@ public class ForumControl {
 	public String getForum(@RequestBody GetForumParam param) {
 		GetForumResult result = new GetForumResult();
 		result.forumInfos = forumService.query(param.uId, param.lastFId);
+		result.isLastPage = forumService.isLastPage();
 		return GsonUtil.toJson(result);
 	}
 }

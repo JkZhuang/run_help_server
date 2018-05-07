@@ -8,6 +8,8 @@ import java.util.ArrayList;
 
 public interface ForumService {
 
+	boolean isLastPage();
+
 	boolean insertForum(ForumInfo forumInfo);
 
 	int selectForumCount(int uId);

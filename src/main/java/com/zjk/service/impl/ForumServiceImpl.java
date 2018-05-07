@@ -23,6 +23,12 @@ public class ForumServiceImpl implements ForumService {
     @Autowired
     private UserDao userDao;
 
+    private boolean isLastPage = false;
+
+    public boolean isLastPage() {
+        return isLastPage;
+    }
+
     public boolean insertForum(ForumInfo forumInfo) {
         return userDao.queryByUId(forumInfo.getuId()) != null && forumDao.insertForum(forumInfo);
     }
@@ -91,12 +97,14 @@ public class ForumServiceImpl implements ForumService {
             for (int i = 0; i < endIndex; i++) {
                 forumInfos.add(infos.get(i));
             }
+            isLastPage = endIndex == infos.size();
         } else {
             int index = indexOfForumList(infos, lastFId);
             int endIndex = (index + DefForumData.FETCH_COUNT + 1) < infos.size() ? (index + DefForumData.FETCH_COUNT + 1) : infos.size();
             for (int i = index + 1; i < endIndex; i++) {
                 forumInfos.add(infos.get(i));
             }
+            isLastPage = endIndex == infos.size();
         }
         return forumInfos;
     }
